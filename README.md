@@ -146,6 +146,7 @@ Se define, a nivel de Gobernanza de Datos, la implementación de una solución d
 Se desarrolla una propuesta de modelado multidimensional para los hechos de ventas y sus dimensiones relevantes, mediante un cubo OLAP para análisis de hechos de ventas.
 
 **Tabla de hechos "Ventas":** id_p, id_c, id_s, id_t, cantidad, importe_unitario, importe_total.
+
 **Tabla de dimensiones:** Producto, Cliente, Sucursal, Tiempo.
 
 Diagrama mermaid:
