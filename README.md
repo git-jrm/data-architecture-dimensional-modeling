@@ -57,45 +57,46 @@ graph LR;
 
 ```mermaid
 graph LR;
-    %% Definición de estilos
     classDef fuente fill:#f9f,stroke:#333,stroke-width:1px;
     classDef proceso fill:#bbf,stroke:#333,stroke-width:1px;
     classDef raw fill:#ff9,stroke:#333,stroke-width:1px;
     classDef trusted fill:#bfb,stroke:#333,stroke-width:1px;
     classDef curated fill:#9f9,stroke:#333,stroke-width:1px;
-    classDef dw fill:#dfd,stroke:#333,stroke-width:1px,stroke-dasharray: 5 5;
+    classDef dw fill:#dfd,stroke:#333,stroke-width:1px,stroke-dasharray:5 5;
     classDef dm fill:#ddd,stroke:#333,stroke-width:1px;
 
-    %% Nodos y asignación de estilos
-    DatosClínicos("Datos Clínicos")::fuente
-    formularios("Formularios")::fuente
-    IoT("IoT")::fuente
-    correos("Correos")::fuente
+    DatosClínicos("Datos Clínicos")
+    Formularios("Formularios")
+    IoT("IoT")
+    Correos("Correos")
+    ETL("ETL / Procesamiento")
+    DataLake_RAW("Data Lake - RAW")
+    DataLake_TRUSTED("Data Lake - TRUSTED")
+    DataLake_CURATED("Data Lake - CURATED")
+    DataWarehouse("Data Warehouse (EDW)")
+    DataMart_Medicina("Data Mart - Medicina")
+    DataMart_RRHH("Data Mart - RRHH")
+    DataMart_Administracion("Data Mart - Admón")
 
-    ETL("ETL / Procesamiento")::proceso
-
-    DataLake_RAW(Data Lake - RAW)::raw
-    DataLake_TRUSTED(Data Lake - TRUSTED)::trusted
-    DataLake_CURATED(Data Lake - CURATED)::curated
-    DataWarehouse("Data Warehouse (EDW)")::dw
-    DataMart_Medicina("Data Mart - Medicina")::dm
-    DataMart_RRHH("Data Mart - RRHH")::dm
-    DataMart_Administracion("Data Mart - Admón")::dm
-
-    %% Conexiones
     DatosClínicos --> ETL
-    formularios --> ETL
+    Formularios --> ETL
     IoT --> DataLake_RAW
-    correos --> DataLake_RAW
-
+    Correos --> DataLake_RAW
     DataLake_RAW --> DataLake_TRUSTED
     DataLake_TRUSTED --> DataLake_CURATED
     ETL --> DataWarehouse
     DataLake_CURATED --> DataWarehouse
-
     DataWarehouse --> DataMart_Medicina
     DataWarehouse --> DataMart_RRHH
     DataWarehouse --> DataMart_Administracion
+
+    class DatosClínicos,Formularios,IoT,Correos fuente;
+    class ETL proceso;
+    class DataLake_RAW raw;
+    class DataLake_TRUSTED trusted;
+    class DataLake_CURATED curated;
+    class DataWarehouse dw;
+    class DataMart_Medicina,DataMart_RRHH,DataMart_Administracion dm;
 ```
 
 ### Gobernanza
@@ -172,31 +173,26 @@ graph LR;
 
 ```mermaid
 graph LR;
-    %% Definición de estilos
     classDef calidad fill:#fdf,stroke:#333,stroke-width:1px;
-    classDef flujo fill:#eee,stroke:#333,stroke-width:1px;
     classDef almacen fill:#dfd,stroke:#333,stroke-width:1px;
     classDef dashboard fill:#ff9,stroke:#333,stroke-width:1px;
 
-    %% Nodos y asignación de estilos
-    RAW(Zona RAW)::almacen
-    TRUSTED(Zona TRUSTED)::almacen
-    CURATED(Zona CURATED)::almacen
-    DataWarehouse(Data Warehouse)::almacen
-    DQ_Dashboard[DQ Dashboard / Alerting]::dashboard
+    RAW("Zona RAW")
+    TRUSTED("Zona TRUSTED")
+    CURATED("Zona CURATED")
+    DataWarehouse("Data Warehouse")
+    DQ_Dashboard["DQ Dashboard / Alerting"]
 
-    Validacion["Validación básica"]::calidad
-    Limpieza["Limpieza + reglas"]::calidad
-    Metricas["Métricas finales"]::calidad
-
-    %% Conexiones
-    RAW -->|Validación básica|TRUSTED
-    TRUSTED -->|Limpieza + reglas|CURATED
-    CURATED -->|Métricas finales|DataWarehouse
+    RAW -->|Validación básica| TRUSTED
+    TRUSTED -->|Limpieza + reglas| CURATED
+    CURATED -->|Métricas finales| DataWarehouse
 
     RAW -.-> DQ_Dashboard
     TRUSTED -.-> DQ_Dashboard
     CURATED -.-> DQ_Dashboard
+
+    class RAW,TRUSTED,CURATED,DataWarehouse almacen;
+    class DQ_Dashboard dashboard;
 ```
 
 [Volver al índice](#índice)
