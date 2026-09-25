@@ -158,9 +158,8 @@ graph LR;
 
 ```mermaid
 graph LR;
-    classDef calidad fill:#fdf,stroke:#333,stroke-width:1px;
-    classDef almacen fill:#dfd,stroke:#333,stroke-width:1px;
-    classDef dashboard fill:#ff9,stroke:#333,stroke-width:1px;
+    classDef almacen fill:#172554,stroke:#60a5fa,stroke-width:1px,color:#eff6ff;
+    classDef dashboard fill:#713f12,stroke:#facc15,stroke-width:1px,color:#fefce8;
 
     RAW("Zona RAW")
     TRUSTED("Zona TRUSTED")
