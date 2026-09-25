@@ -231,12 +231,6 @@ erDiagram
 ```
 
 **Jerarquías y atributos de las dimensiones:**
-
-- **Producto:** SKU → subcategoría → categoría (nombre_producto, marca, modelo)
-- **Cliente:** nicho → segmento → tipo (nombre_cliente, edad, email)
-- **Sucursal:** ciudad → región → país (nombre_sucursal, dirección, comuna)
-- **Tiempo:** día → mes → año (nombre_dia, dia_habil, descuento)
-
 | Dimensión | Jerarquía (Niveles) | Atributos Principales |
 | :--- | :--- | :--- |
 | **Producto** | SKU → Subcategoría → Categoría | nombre_producto, marca, modelo |
