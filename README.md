@@ -1,16 +1,19 @@
 # Arquitectura de datos y Modelado dimensional
 
-En esta página se desarrolla el proyecto del módulo 5 del bootcamp de ing de datos, llamado "**Proyecto Arquitectura Datos**". Donde abordaremos una solución integral para una empresa que presenta diversos desafíos los cuales se desarrollan por etapas cada una aborda aspectos diferentes.
+Este repositorio documenta dos casos de arquitectura y modelado de datos aplicados a escenarios inspirados en empresas reales: diseño de una arquitectura de datos por capas (Data Lake, Data Warehouse, gobernanza) y modelado dimensional para analítica de negocio (esquema estrella, enfoque Kimball).
 
-## Índice:
-- [Etapa 1: Arquitectura de Datos](#etapa-1-arquitectura-de-datos)
-- [Etapa 2: Enfoques para el Almacenamiento y Gestión de los Datos](#etapa-2-enfoques-para-el-almacenamiento-y-gestión-de-los-datos)
-- [Etapa 3: Calidad de los Datos](#etapa-3-calidad-de-los-datos)
-- [Etapa 4: Modelamiento Multidimensional](#etapa-4-modelamiento-multidimensional)
+Índice:
+- [I. Arquitectura de Datos](#etapa-1-arquitectura-de-datos)
+    - [Arquitectura de Datos](#etapa-1-arquitectura-de-datos)
+    - [Enfoques para el Almacenamiento y Gestión de los Datos](#etapa-2-enfoques-para-el-almacenamiento-y-gestión-de-los-datos)
+    - [Calidad de los Datos](#etapa-3-calidad-de-los-datos)
+- [II. Modelamiento Multidimensional](#etapa-4-modelamiento-multidimensional)
 - [Análisis transversal](#an%C3%A1lisis-transversal)
 - [Conclusión](#conclusi%C3%B3n)
 
-## Etapa 1: Arquitectura de Datos
+# I. Arquitectura de Datos
+
+## 1. Arquitectura de Datos
 
 ### Introducción
 
@@ -68,9 +71,9 @@ Para la Gobernanza se aplicaron los principios del marco DAMA-DMBOK destacando l
 
 La arquitectura propuesta separa el almacenamiento y procesamiento, permitiendo manejar datos estructurados y no estructurados de forma escalable. Esto mejora la calidad de los datos, la seguridad y la velocidad de los reportes, lo que es vital para el sector salud.
 
-[Volver](#m5-arquitectura-y-modelamiento-de-datos)
+[Volver](#m5)
 
-## Etapa 2: Enfoques para el Almacenamiento y Gestión de los Datos
+## 2. Enfoques para el Almacenamiento y Gestión de los Datos
 
 ### Tecnologías sugeridas
 
@@ -92,7 +95,7 @@ Para la Gobernanza se recomiendan las prácticas del DAMA-DMBOK destacando:
 
 [Volver](#m5-arquitectura-y-modelamiento-de-datos)
 
-## Etapa 3: Calidad de los Datos
+## 3. Calidad de los Datos
 
 Objetivo: Diseñar un plan de aseguramiento de calidad de los datos, integrado a la arquitectura definida.
 
@@ -127,19 +130,19 @@ graph LR;
 
 [Volver](#m5-arquitectura-y-modelamiento-de-datos)
 
-## Etapa 4: Modelamiento Multidimensional
+# II. Modelamiento dimensional
 
-### Introducción
+## Introducción
 
 En la actualidad la empresa Mercato del sector retail está comenzando a tener problemas de ralentización en el sistema ocasionado por la carga que supone los procesos de analitica del departamento de business intelligence quienes requieren con urgencia mejorar su sistema de analitica. Esta situación impacta a toda la organización por lo que es prioritaria.
 
-### Diagnóstico
+## Diagnóstico
 
 Luego de un análisis de la situación se concluyó que la lentitud que se ha empezado a reportar este último periodo está siendo generada actualmente por el sistema realtime de analitica que realiza sus consultas directamente a la base de datos transaccional OLTP.
 
 Esto además de carga de procesamiento ha comenzado a generar complejidad operativa en el sistema de consultas con relaciones complejas.
 
-### Propuesta
+## Propuesta
 
 Diseño modelo multidimensional:
 
@@ -159,7 +162,7 @@ Tiempo: día → mes → año (nombre_dia, dia_habil, descuento)
 
 Con esta solución optimizada para lectura obtenemos escalabilidad, rendimiento analítico, facilidad para las consultas y presión para la toma de decisiones estratégicas.
 
-### Justificación de diseño
+## Justificación de diseño
 
 Se optó por modelar un esquema estrella más simple que el esquema copo de nieve, ya que tiene menos tablas que mantener la complejidad es más baja, también la complejidad de las consultas.
 
@@ -167,21 +170,29 @@ El esquema al estar orientado a consultas simples realiza una desnormalización 
 
 Se complementa con la implementación de Slowly Changing Dimensions “Type 4”, para una tabla separada con data histórica (ej: más de 3 años).
 
-[Volver](#m5-arquitectura-y-modelamiento-de-datos)
+[Volver](#m5)
 
-## Análisis transversal
+---
 
-- Transformación digital sectorial: Ambos casos (InfoHealth y Mercato) evidencian cómo la falta de arquitectura de datos impacta directamente en la operación empresarial. En el sector salud, la pérdida de confianza en los reportes compromete decisiones críticas, mientras que en retail, la lentitud del sistema afecta la competitividad comercial.
-- Gobernanza como factor crítico: La implementación exitosa de las soluciones técnicas propuestas (Data Lake multicapa, Data Warehouse multidimensional) depende fundamentalmente de una gobernanza sólida basada en DAMA-DMBOK, que asegure calidad, seguridad y cumplimiento normativo.
-- Escalabilidad y flexibilidad: Las arquitecturas propuestas priorizan la separación de responsabilidades y el diseño evolutivo. El enfoque bottom-up de Kimball en Mercato y la arquitectura por capas en InfoHealth permiten crecimiento incremental sin comprometer la estabilidad del sistema.
-- Calidad como pilar transversal: La implementación de controles de calidad en cada etapa del flujo de datos (RAW→TRUSTED→CURATED) garantiza la confiabilidad necesaria para la toma de decisiones estratégicas en ambos sectores.
+# Análisis Transversal
 
-[Volver](#m5-arquitectura-y-modelamiento-de-datos)
+- **Transformación digital sectorial:** ambos casos (InfoHealth y Mercato) muestran cómo la falta de arquitectura de datos impacta directamente la operación. En salud, la pérdida de confianza en los reportes compromete decisiones críticas; en retail, la lentitud del sistema afecta la competitividad comercial.
+- **Gobernanza como factor crítico:** la implementación exitosa de las soluciones técnicas (Data Lake multicapa, Data Warehouse multidimensional) depende de una gobernanza sólida basada en DAMA-DMBOK que asegure calidad, seguridad y cumplimiento normativo.
+- **Escalabilidad y flexibilidad:** ambas arquitecturas priorizan la separación de responsabilidades y el diseño evolutivo. El enfoque bottom-up de Kimball en Mercato y la arquitectura por capas en InfoHealth permiten crecimiento incremental sin comprometer la estabilidad del sistema.
+- **Calidad como pilar transversal:** los controles de calidad en cada etapa del flujo de datos (RAW → TRUSTED → CURATED) garantizan la confiabilidad necesaria para la toma de decisiones estratégicas en ambos sectores.
 
-## Conclusión
+[Volver al índice](#índice)
 
-La tecnología actúa como habilitador fundamental en la transformación organizacional hacia decisiones basadas en datos. Los casos analizados demuestran que las arquitecturas implementadas (Data Lake y Data Warehouse) resuelven problemas técnicos inmediatos mientras construyen capacidades analíticas sostenibles.
+# Conclusión General
 
-El éxito depende de integrar estas herramientas tecnológicas con procesos organizacionales efectivos, donde la gobernanza facilita la adopción gradual y el impacto medible en el desempeño empresarial
+La tecnología actúa como habilitador de la transformación organizacional hacia decisiones basadas en datos. Los casos analizados muestran que las arquitecturas implementadas (Data Lake y Data Warehouse) resuelven problemas técnicos inmediatos mientras construyen capacidades analíticas sostenibles.
 
-[Volver](#m5-arquitectura-y-modelamiento-de-datos)
+El éxito depende de integrar estas herramientas tecnológicas con procesos organizacionales efectivos, donde la gobernanza facilita la adopción gradual y el impacto medible en el desempeño empresarial.
+
+[Volver al índice](#índice)[Volver](#m5)
+
+
+
+
+
+
