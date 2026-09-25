@@ -2,14 +2,16 @@
 
 Este repositorio documenta dos casos de arquitectura y modelado de datos aplicados a escenarios inspirados en empresas reales: diseño de una arquitectura de datos por capas (Data Lake, Data Warehouse, gobernanza) y modelado dimensional para analítica de negocio (esquema estrella, enfoque Kimball).
 
-Índice:
-- [I. Arquitectura de Datos](#etapa-1-arquitectura-de-datos)
-    - [Arquitectura de Datos](#etapa-1-arquitectura-de-datos)
-    - [Enfoques para el Almacenamiento y Gestión de los Datos](#etapa-2-enfoques-para-el-almacenamiento-y-gestión-de-los-datos)
-    - [Calidad de los Datos](#etapa-3-calidad-de-los-datos)
-- [II. Modelamiento Multidimensional](#etapa-4-modelamiento-multidimensional)
-- [Análisis transversal](#an%C3%A1lisis-transversal)
-- [Conclusión](#conclusi%C3%B3n)
+Índice
+- [I. 🏥 InfoHealth: Arquitectura de Datos para Recuperar la Confianza](#i--infohealth-arquitectura-de-datos-para-recuperar-la-confianza)
+  - [1. Diagnóstico y Arquitectura Propuesta](#1-diagnóstico-y-arquitectura-propuesta)
+  - [2. Almacenamiento y Gestión de Datos](#2-almacenamiento-y-gestión-de-datos)
+  - [3. Calidad de los Datos](#3-calidad-de-los-datos)
+- [II. 🛒 Mercato: Del OLTP al Modelo Dimensional para BI](#ii--mercato-del-oltp-al-modelo-dimensional-para-bi)
+- [Análisis Transversal](#análisis-transversal)
+- [Conclusión General](#conclusión-general)
+
+---
 
 # I. 🏥 InfoHealth: Arquitectura de Datos para Recuperar la Confianza
 
