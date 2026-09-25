@@ -40,7 +40,6 @@ Se propone una arquitectura basada en capas que separa responsabilidades:
 - **Seguridad:** cifrado de datos, control de acceso.
 
 Diagrama de fuentes de datos, ingesta, integración y almacenamiento:
-
 ```mermaid
 graph LR;
   DatosClínicos-->ETL;
@@ -148,6 +147,42 @@ Se desarrolla una propuesta de modelado multidimensional para los hechos de vent
 
 **Tabla de hechos "Ventas":** id_p, id_c, id_s, id_t, cantidad, importe_unitario, importe_total.
 **Tabla de dimensiones:** Producto, Cliente, Sucursal, Tiempo.
+
+erDiagram
+    FACT_VENTAS {
+        int id_p PK, FK
+        int id_c PK, FK
+        int id_s PK, FK
+        int id_t PK, FK
+        int cantidad
+        decimal importe_unitario
+        decimal importe_total
+    }
+    DIM_PRODUCTO {
+        int id_p PK
+        string producto
+        string sku
+        string categoria
+    }
+    DIM_CLIENTE {
+        int id_c PK
+        string cliente
+        string segmento
+    }
+    DIM_SUCURSAL {
+        int id_s PK
+        string sucursal
+        string region
+    }
+    DIM_TIEMPO {
+        int id_t PK
+        date fecha
+        string anio
+    }
+    FACT_VENTAS ||--o{ DIM_PRODUCTO : "es de"
+    FACT_VENTAS ||--o{ DIM_CLIENTE : "lo realiza"
+    FACT_VENTAS ||--o{ DIM_SUCURSAL : "ocurre en"
+    FACT_VENTAS ||--o{ DIM_TIEMPO : "sucede en"
 
 **Jerarquías y atributos de las dimensiones:**
 
