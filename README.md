@@ -148,6 +148,7 @@ Se desarrolla una propuesta de modelado multidimensional para los hechos de vent
 **Tabla de hechos "Ventas":** id_p, id_c, id_s, id_t, cantidad, importe_unitario, importe_total.
 **Tabla de dimensiones:** Producto, Cliente, Sucursal, Tiempo.
 
+```mermaid
 erDiagram
     FACT_VENTAS {
         int id_p PK, FK
@@ -183,6 +184,7 @@ erDiagram
     FACT_VENTAS ||--o{ DIM_CLIENTE : "lo realiza"
     FACT_VENTAS ||--o{ DIM_SUCURSAL : "ocurre en"
     FACT_VENTAS ||--o{ DIM_TIEMPO : "sucede en"
+```
 
 **Jerarquías y atributos de las dimensiones:**
 
