@@ -102,7 +102,7 @@ graph LR;
 ```mermaid
 graph LR;
     classDef fuente fill:#2e1065,stroke:#c084fc,stroke-width:1px,color:#f3e8ff;
-    classDef proceso fill:#831843,stroke:#f472b6,stroke-width:1px,color:#fdf2f8;
+    classDef proceso fill:#0369a1,stroke:#38bdf8,stroke-width:1px,color:#f8fafc;
     classDef raw fill:#172554,stroke:#60a5fa,stroke-width:1px,color:#eff6ff;
     classDef trusted fill:#14532d,stroke:#4ade80,stroke-width:1px,color:#f0fdf4;
     classDef curated fill:#0f766e,stroke:#2dd4bf,stroke-width:1px,color:#f0fdfa;
