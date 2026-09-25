@@ -11,33 +11,31 @@ Este repositorio documenta dos casos de arquitectura y modelado de datos aplicad
 - [Análisis transversal](#an%C3%A1lisis-transversal)
 - [Conclusión](#conclusi%C3%B3n)
 
-# I. Arquitectura de Datos
+# I. 🏥 InfoHealth: Arquitectura de Datos para Recuperar la Confianza
 
-## 1. Arquitectura de Datos
+## 1. Diagnóstico y Arquitectura Propuesta
 
 ### Introducción
 
-Este documento tiene como objetivo principal abordar el desafío de la gestión de datos en la empresa InfoHealth. A través del rol de Arquitecto de Datos, se propone un análisis exhaustivo de la situación actual, identificando las deficiencias clave que impiden la optimización de los procesos. 
+Este caso aborda el desafío de la gestión de datos en la empresa InfoHealth. Desde el rol de Arquitecto de Datos, se propone un análisis de la situación actual, identificando las deficiencias clave que impiden la optimización de los procesos.
 
-Basado en este diagnóstico, se presenta una propuesta de arquitectura de datos y un plan de mejora, diseñados para garantizar la escalabilidad, seguridad y accesibilidad, pilares fundamentales para el crecimiento sostenido de la organización en el sector salud.
+A partir de este diagnóstico, se presenta una propuesta de arquitectura de datos y un plan de mejora, diseñados para garantizar escalabilidad, seguridad y accesibilidad — pilares fundamentales para el crecimiento sostenido de la organización en el sector salud.
 
 ### Diagnóstico
 
-Debido a la gran abundancia y diversidad de fuentes de datos junto a la falta de arquitectura de datos ha provocado un escenario donde ya se han reportado varios casos de duplicación de datos que sin trazabilidad genera riesgos de confianza, además se han detectado riesgos de seguridad en el acceso a la información.
+La gran abundancia y diversidad de fuentes de datos, junto a la falta de una arquitectura de datos, ha generado casos de duplicación sin trazabilidad, lo que compromete la confianza en la información. Además, se han detectado riesgos de seguridad en el acceso a los datos.
 
-Esta situación ha afectado al equipo de analistas de datos ya que el tiempo empleado en preprocesar los datos ha crecido exponencialmente.
-
-Además la dirección y el staff médico han perdido la confianza en los reportes, por lo que es clave priorizar el proyecto ya que se requiere un sistema ágil y preciso para apoyar la operación del negocio.
+Esta situación ha afectado al equipo de analistas, cuyo tiempo de preprocesamiento ha crecido exponencialmente. La dirección y el staff médico han perdido confianza en los reportes, por lo que se requiere un sistema ágil y preciso que soporte la operación del negocio.
 
 ### Propuesta
 
 Se propone una arquitectura basada en capas que separa responsabilidades:
 
-- Fuentes de datos: Datos clínicos, IoT, formularios, correos.
-- Almacenamiento: Data Lake (no estructurados), Data Warehouse (estructurados).
-- Procesamiento: ETL/ELT.
-- Acceso: Dashboards de BI.
-- Seguridad: Cifrado de datos. Control de acceso.
+- **Fuentes de datos:** datos clínicos, IoT, formularios, correos.
+- **Almacenamiento:** Data Lake (no estructurados), Data Warehouse (estructurados).
+- **Procesamiento:** ETL/ELT.
+- **Acceso:** dashboards de BI.
+- **Seguridad:** cifrado de datos, control de acceso.
 
 Diagrama de fuentes de datos, ingesta, integración y almacenamiento:
 
@@ -58,52 +56,52 @@ graph LR;
 
 ### Gobernanza
 
-Para la Gobernanza se aplicaron los principios del marco DAMA-DMBOK destacando los siguientes aspectos:
+Se aplican los principios del marco DAMA-DMBOK, destacando:
 
-- Calidad de datos: Garantizar la precisión y consistencia.
-- Arquitectura de datos: permite la escalabilidad del sistema, promueve el reuso de componentes y facilita la trazabilidad de los datos.
-- Modelado y diseño de datos: organiza los datos para una mejor comprensión y uso, asegurando su consistencia y eficiencia en el acceso.
-- Seguridad de datos: proteger la información sensible en reposo, en tránsito y en uso.
-- Integración e interoperabilidad de datos: unifica datos de diversas fuentes, permitiendo que sistemas diferentes se comuniquen de manera fluida.
-- Data warehousing & business intelligence: proporciona una vista consolidada de los datos para análisis, facilitando la toma de decisiones estratégicas.
+- **Calidad de datos:** garantizar precisión y consistencia.
+- **Arquitectura de datos:** permite escalabilidad, promueve el reuso de componentes y facilita la trazabilidad.
+- **Modelado y diseño de datos:** organiza los datos para una mejor comprensión y uso.
+- **Seguridad de datos:** protege la información sensible en reposo, en tránsito y en uso.
+- **Integración e interoperabilidad:** unifica datos de diversas fuentes para que sistemas distintos se comuniquen de forma fluida.
+- **Data warehousing & business intelligence:** entrega una vista consolidada para análisis y toma de decisiones estratégicas.
 
 ### Justificación de diseño
 
-La arquitectura propuesta separa el almacenamiento y procesamiento, permitiendo manejar datos estructurados y no estructurados de forma escalable. Esto mejora la calidad de los datos, la seguridad y la velocidad de los reportes, lo que es vital para el sector salud.
+La arquitectura propuesta separa almacenamiento y procesamiento, permitiendo manejar datos estructurados y no estructurados de forma escalable. Esto mejora la calidad de los datos, la seguridad y la velocidad de los reportes — factores críticos en el sector salud.
 
-[Volver](#m5)
+[Volver al índice](#índice)
 
-## 2. Enfoques para el Almacenamiento y Gestión de los Datos
+## 2. Almacenamiento y Gestión de Datos
 
 ### Tecnologías sugeridas
 
-Las herramientas y tecnologías sugeridas por capas son:
+Herramientas y tecnologías sugeridas por capa:
 
-- Almacenamiento: Amazon S3 (Data Lake), Amazon Redshift (Data Warehouse).
-- Procesamiento: Apache Spark y AWS Glue.
-- Acceso: Power BI, Tableau.
-- Seguridad: cifrado en reposo y en tránsito mediante AWS y acceso con IAM.
+- **Almacenamiento:** Amazon S3 (Data Lake), Amazon Redshift (Data Warehouse).
+- **Procesamiento:** Apache Spark y AWS Glue.
+- **Acceso:** Power BI, Tableau.
+- **Seguridad:** cifrado en reposo y en tránsito mediante AWS, control de acceso con IAM.
 
 ### Gobernanza
 
-Para la Gobernanza se recomiendan las prácticas del DAMA-DMBOK destacando:
+Prácticas recomendadas bajo DAMA-DMBOK:
 
-- Gestión de metadatos: se implementa catálogo de datos centralizado, documentar fuentes, transformaciones y linaje para trazabilidad.
-- Master Data Management: se define utilizar datos maestros únicos para: pacientes, médicos, historial, tratamientos. Para evitar duplicaciones y mantener la consistencia.
-- Gestión del ciclo de vida de los datos: se definir políticas para la retención de 3 años de datos, y luego pasa a archivo seguro de información médica.
-- Operaciones de datos: se establece procedimiento de monitoreo y backup diario. Y plan de recuperación de catastrofes de menos de 1 horas, garantizando disponibilidad y continuidad del servicio.
+- **Gestión de metadatos:** catálogo de datos centralizado; documentación de fuentes, transformaciones y linaje para trazabilidad.
+- **Master Data Management:** datos maestros únicos para pacientes, médicos, historial y tratamientos, evitando duplicaciones.
+- **Ciclo de vida de los datos:** retención de 3 años, luego archivo seguro de información médica.
+- **Operaciones de datos:** monitoreo y backup diario; plan de recuperación ante desastres con RTO menor a 1 hora, garantizando disponibilidad y continuidad del servicio.
 
-[Volver](#m5-arquitectura-y-modelamiento-de-datos)
+[Volver al índice](#índice)
 
 ## 3. Calidad de los Datos
 
-Objetivo: Diseñar un plan de aseguramiento de calidad de los datos, integrado a la arquitectura definida.
+**Objetivo:** diseñar un plan de aseguramiento de calidad de datos, integrado a la arquitectura definida.
 
-### Controles por etapa
+### Controles por zona del Data Lake
 
-- Ingesta (RAW): validación de formatos, detección de archivos corruptos, verificación de esquemas
-- Procesamiento (TRUSTED): reglas de limpieza, detección de duplicados, validación de rangos y dominios.
-- Curación (CURATED): consistencia referencial, completitud de datos, exactitud de métricas calculadas.
+- **Ingesta (RAW):** validación de formatos, detección de archivos corruptos, verificación de esquemas.
+- **Procesamiento (TRUSTED):** reglas de limpieza, detección de duplicados, validación de rangos y dominios.
+- **Curación (CURATED):** consistencia referencial, completitud de datos, exactitud de métricas calculadas.
 
 ### Métricas e indicadores
 
@@ -111,7 +109,7 @@ Completitud (% datos faltantes), exactitud (% errores), consistencia (duplicados
 
 ### Monitoreo y calidad
 
-Implementación de data quality dashboards con alertas automáticas cuando las métricas superen umbrales críticos (ej: >5% datos faltantes). Plan de remediación con escalamiento automático al equipo de datos y re-procesamiento de lotes afectados.
+Data quality dashboards con alertas automáticas cuando las métricas superan umbrales críticos (ej: >5% datos faltantes), con plan de remediación y escalamiento automático al equipo de datos para re-procesar los lotes afectados.
 
 ### Integración en arquitectura
 
@@ -128,7 +126,7 @@ graph LR;
   CURATED-->DQ_Dashboard;
 ```
 
-[Volver](#m5-arquitectura-y-modelamiento-de-datos)
+[Volver al índice](#índice)
 
 # II. 🛒 Mercato: Del OLTP al Modelo Dimensional para BI
 
