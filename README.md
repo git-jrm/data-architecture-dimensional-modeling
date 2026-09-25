@@ -130,47 +130,43 @@ graph LR;
 
 [Volver](#m5-arquitectura-y-modelamiento-de-datos)
 
-# II. Modelamiento dimensional
+# II. 🛒 Mercato: Del OLTP al Modelo Dimensional para BI
 
 ## Introducción
 
-En la actualidad la empresa Mercato del sector retail está comenzando a tener problemas de ralentización en el sistema ocasionado por la carga que supone los procesos de analitica del departamento de business intelligence quienes requieren con urgencia mejorar su sistema de analitica. Esta situación impacta a toda la organización por lo que es prioritaria.
+La empresa Mercato, del sector retail, presenta problemas de ralentización del sistema causados por la carga que generan los procesos analíticos del departamento de business intelligence. La situación impacta a toda la organización y requiere resolución prioritaria.
 
 ## Diagnóstico
 
-Luego de un análisis de la situación se concluyó que la lentitud que se ha empezado a reportar este último periodo está siendo generada actualmente por el sistema realtime de analitica que realiza sus consultas directamente a la base de datos transaccional OLTP.
-
-Esto además de carga de procesamiento ha comenzado a generar complejidad operativa en el sistema de consultas con relaciones complejas.
+El análisis identificó que la lentitud reportada la genera el sistema realtime de analítica, que ejecuta sus consultas directamente contra la base de datos transaccional OLTP. Esto añade carga de procesamiento y complejidad operativa por las consultas con relaciones complejas.
 
 ## Propuesta
 
-Diseño modelo multidimensional:
+Se define, a nivel de Gobernanza de Datos, la implementación de una solución de Data Warehouse con enfoque bottom-up de Ralph Kimball, permitiendo centrar el diseño en el modelado multidimensional del Data Mart del área de inteligencia de negocios.
 
-Definimos a nivel de Gobernanza de Datos una implementación de una solución de Data Warehouse, con enfoque bottom-up de Ralph Kimball. Esto nos permitirá centrarnos en el modelado multidimensional del Data Mart del área inteligencia de negocios.
+Se desarrolla una propuesta de modelado multidimensional para los hechos de ventas y sus dimensiones relevantes, mediante un cubo OLAP para análisis de hechos de ventas.
 
-Como analista de datos vamos a realizar una propuesta desarrollando el modelado multidimensional para los hechos de ventas y sus dimensiones relevantes. Mediante un cubo OLAP para análisis de hechos de ventas.
+**Tabla de hechos "Ventas":** id_p, id_c, id_s, id_t, cantidad, importe_unitario, importe_total.
+**Tabla de dimensiones:** Producto, Cliente, Sucursal, Tiempo.
 
-Tabla de hechos “Ventas”: id_p, id_c, id_s, id_t, cantidad, importe_unitario, importe_total.
-Tabla de dimensiones Producto, Cliente, Sucursal, Tiempo.
+**Jerarquías y atributos de las dimensiones:**
 
-Jerarquías y atributos de las dimensiones:
+- **Producto:** SKU → subcategoría → categoría (nombre_producto, marca, modelo)
+- **Cliente:** nicho → segmento → tipo (nombre_cliente, edad, email)
+- **Sucursal:** ciudad → región → país (nombre_sucursal, dirección, comuna)
+- **Tiempo:** día → mes → año (nombre_dia, dia_habil, descuento)
 
-Producto: SKU → subcategoría → categoría (nombre_producto, marca, modelo)
-Cliente: nicho → segmento → tipo (nombre_cliente, edad, email)
-Sucursal: ciudad → región →país (nombre_sucursal, dirección, comuna).
-Tiempo: día → mes → año (nombre_dia, dia_habil, descuento)
-
-Con esta solución optimizada para lectura obtenemos escalabilidad, rendimiento analítico, facilidad para las consultas y presión para la toma de decisiones estratégicas.
+Esta solución, optimizada para lectura, entrega escalabilidad, rendimiento analítico y facilidad de consulta para la toma de decisiones estratégicas.
 
 ## Justificación de diseño
 
-Se optó por modelar un esquema estrella más simple que el esquema copo de nieve, ya que tiene menos tablas que mantener la complejidad es más baja, también la complejidad de las consultas.
+Se optó por un esquema estrella en lugar de un esquema copo de nieve, ya que requiere menos tablas y reduce la complejidad tanto del modelo como de las consultas.
 
-El esquema al estar orientado a consultas simples realiza una desnormalización controlada ganando simplicidad y eficiencia. Además es evolutivo porque facilita agregar nuevas dimensiones y métricas si se requiere.
+El esquema, orientado a consultas simples, aplica una desnormalización controlada que gana en simplicidad y eficiencia, y es evolutivo: facilita agregar nuevas dimensiones y métricas cuando se requiera.
 
-Se complementa con la implementación de Slowly Changing Dimensions “Type 4”, para una tabla separada con data histórica (ej: más de 3 años).
+Se complementa con Slowly Changing Dimensions tipo 4, usando una tabla separada para datos históricos (más de 3 años).
 
-[Volver](#m5)
+[Volver al índice](#índice)
 
 ---
 
