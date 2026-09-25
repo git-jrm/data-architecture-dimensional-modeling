@@ -172,10 +172,13 @@ Se complementa con Slowly Changing Dimensions tipo 4, usando una tabla separada 
 
 ## Análisis Transversal
 
-- **Transformación digital sectorial:** ambos casos (InfoHealth y Mercato) muestran cómo la falta de arquitectura de datos impacta directamente la operación. En salud, la pérdida de confianza en los reportes compromete decisiones críticas; en retail, la lentitud del sistema afecta la competitividad comercial.
-- **Gobernanza como factor crítico:** la implementación exitosa de las soluciones técnicas (Data Lake multicapa, Data Warehouse multidimensional) depende de una gobernanza sólida basada en DAMA-DMBOK que asegure calidad, seguridad y cumplimiento normativo.
-- **Escalabilidad y flexibilidad:** ambas arquitecturas priorizan la separación de responsabilidades y el diseño evolutivo. El enfoque bottom-up de Kimball en Mercato y la arquitectura por capas en InfoHealth permiten crecimiento incremental sin comprometer la estabilidad del sistema.
-- **Calidad como pilar transversal:** los controles de calidad en cada etapa del flujo de datos (RAW → TRUSTED → CURATED) garantizan la confiabilidad necesaria para la toma de decisiones estratégicas en ambos sectores.
+**Transformación digital sectorial:** ambos casos (InfoHealth y Mercato) muestran cómo la falta de arquitectura de datos impacta directamente la operación. En salud, la pérdida de confianza en los reportes compromete decisiones críticas; en retail, la lentitud del sistema afecta la competitividad comercial.
+
+**Gobernanza como factor crítico:** la implementación exitosa de las soluciones técnicas (Data Lake multicapa, Data Warehouse multidimensional) depende de una gobernanza sólida basada en DAMA-DMBOK que asegure calidad, seguridad y cumplimiento normativo.
+
+**Escalabilidad y flexibilidad:** ambas arquitecturas priorizan la separación de responsabilidades y el diseño evolutivo. El enfoque bottom-up de Kimball en Mercato y la arquitectura por capas en InfoHealth permiten crecimiento incremental sin comprometer la estabilidad del sistema.
+
+**Calidad como pilar transversal:** los controles de calidad en cada etapa del flujo de datos (RAW → TRUSTED → CURATED) garantizan la confiabilidad necesaria para la toma de decisiones estratégicas en ambos sectores.
 
 [Volver al índice](#índice)
 
