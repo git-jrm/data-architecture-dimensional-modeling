@@ -170,7 +170,7 @@ Se complementa con Slowly Changing Dimensions tipo 4, usando una tabla separada 
 
 ---
 
-# Análisis Transversal
+## Análisis Transversal
 
 - **Transformación digital sectorial:** ambos casos (InfoHealth y Mercato) muestran cómo la falta de arquitectura de datos impacta directamente la operación. En salud, la pérdida de confianza en los reportes compromete decisiones críticas; en retail, la lentitud del sistema afecta la competitividad comercial.
 - **Gobernanza como factor crítico:** la implementación exitosa de las soluciones técnicas (Data Lake multicapa, Data Warehouse multidimensional) depende de una gobernanza sólida basada en DAMA-DMBOK que asegure calidad, seguridad y cumplimiento normativo.
@@ -179,7 +179,7 @@ Se complementa con Slowly Changing Dimensions tipo 4, usando una tabla separada 
 
 [Volver al índice](#índice)
 
-# Conclusión General
+## Conclusión General
 
 La tecnología actúa como habilitador de la transformación organizacional hacia decisiones basadas en datos. Los casos analizados muestran que las arquitecturas implementadas (Data Lake y Data Warehouse) resuelven problemas técnicos inmediatos mientras construyen capacidades analíticas sostenibles.
 
