@@ -191,7 +191,7 @@ Se desarrolla una propuesta de modelado multidimensional para los hechos de vent
 
 **Tabla de dimensiones:** Producto, Cliente, Sucursal, Tiempo.
 
-Diagrama mermaid:
+Diagrama de dimensiones:
 ```mermaid
 erDiagram
     FACT_VENTAS {
@@ -230,7 +230,7 @@ erDiagram
     FACT_VENTAS ||--o{ DIM_TIEMPO : "sucede en"
 ```
 
-**Jerarquías y atributos de las dimensiones:**
+Jerarquías y atributos de las dimensiones:
 | Dimensión | Jerarquía (Niveles) | Atributos Principales |
 | :--- | :--- | :--- |
 | **Producto** | SKU → Subcategoría → Categoría | nombre_producto, marca, modelo |
