@@ -148,16 +148,6 @@ Los controles de calidad se ejecutan en cada zona del Data Lake usando AWS Glue 
 Diagrama de proceso de monitoreo y remediación:
 ```mermaid
 graph LR;
-  RAW-->|Validación básica|TRUSTED;
-  TRUSTED-->|Limpieza + reglas|CURATED;
-  CURATED-->|Métricas finales|DataWarehouse;
-  RAW-->DQ_Dashboard;
-  TRUSTED-->DQ_Dashboard;
-  CURATED-->DQ_Dashboard;
-```
-
-```mermaid
-graph LR;
     classDef almacen fill:#172554,stroke:#60a5fa,stroke-width:1px,color:#eff6ff;
     classDef dashboard fill:#713f12,stroke:#facc15,stroke-width:1px,color:#fefce8;
 
