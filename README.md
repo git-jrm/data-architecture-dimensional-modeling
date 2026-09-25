@@ -55,6 +55,49 @@ graph LR;
   DataWarehouse-->DataMart_Administracion;
 ```
 
+```mermaid
+graph LR;
+    %% Definición de estilos
+    classDef fuente fill:#f9f,stroke:#333,stroke-width:1px;
+    classDef proceso fill:#bbf,stroke:#333,stroke-width:1px;
+    classDef raw fill:#ff9,stroke:#333,stroke-width:1px;
+    classDef trusted fill:#bfb,stroke:#333,stroke-width:1px;
+    classDef curated fill:#9f9,stroke:#333,stroke-width:1px;
+    classDef dw fill:#dfd,stroke:#333,stroke-width:1px,stroke-dasharray: 5 5;
+    classDef dm fill:#ddd,stroke:#333,stroke-width:1px;
+
+    %% Nodos y asignación de estilos
+    DatosClínicos("Datos Clínicos")::fuente
+    formularios("Formularios")::fuente
+    IoT("IoT")::fuente
+    correos("Correos")::fuente
+
+    ETL("ETL / Procesamiento")::proceso
+
+    DataLake_RAW(Data Lake - RAW)::raw
+    DataLake_TRUSTED(Data Lake - TRUSTED)::trusted
+    DataLake_CURATED(Data Lake - CURATED)::curated
+    DataWarehouse("Data Warehouse (EDW)")::dw
+    DataMart_Medicina("Data Mart - Medicina")::dm
+    DataMart_RRHH("Data Mart - RRHH")::dm
+    DataMart_Administracion("Data Mart - Admón")::dm
+
+    %% Conexiones
+    DatosClínicos --> ETL
+    formularios --> ETL
+    IoT --> DataLake_RAW
+    correos --> DataLake_RAW
+
+    DataLake_RAW --> DataLake_TRUSTED
+    DataLake_TRUSTED --> DataLake_CURATED
+    ETL --> DataWarehouse
+    DataLake_CURATED --> DataWarehouse
+
+    DataWarehouse --> DataMart_Medicina
+    DataWarehouse --> DataMart_RRHH
+    DataWarehouse --> DataMart_Administracion
+```
+
 ### Gobernanza
 
 Se aplican los principios del marco DAMA-DMBOK, destacando:
@@ -125,6 +168,35 @@ graph LR;
   RAW-->DQ_Dashboard;
   TRUSTED-->DQ_Dashboard;
   CURATED-->DQ_Dashboard;
+```
+
+```mermaid
+graph LR;
+    %% Definición de estilos
+    classDef calidad fill:#fdf,stroke:#333,stroke-width:1px;
+    classDef flujo fill:#eee,stroke:#333,stroke-width:1px;
+    classDef almacen fill:#dfd,stroke:#333,stroke-width:1px;
+    classDef dashboard fill:#ff9,stroke:#333,stroke-width:1px;
+
+    %% Nodos y asignación de estilos
+    RAW(Zona RAW)::almacen
+    TRUSTED(Zona TRUSTED)::almacen
+    CURATED(Zona CURATED)::almacen
+    DataWarehouse(Data Warehouse)::almacen
+    DQ_Dashboard[DQ Dashboard / Alerting]::dashboard
+
+    Validacion["Validación básica"]::calidad
+    Limpieza["Limpieza + reglas"]::calidad
+    Metricas["Métricas finales"]::calidad
+
+    %% Conexiones
+    RAW -->|Validación básica|TRUSTED
+    TRUSTED -->|Limpieza + reglas|CURATED
+    CURATED -->|Métricas finales|DataWarehouse
+
+    RAW -.-> DQ_Dashboard
+    TRUSTED -.-> DQ_Dashboard
+    CURATED -.-> DQ_Dashboard
 ```
 
 [Volver al índice](#índice)
