@@ -237,6 +237,13 @@ erDiagram
 - **Sucursal:** ciudad → región → país (nombre_sucursal, dirección, comuna)
 - **Tiempo:** día → mes → año (nombre_dia, dia_habil, descuento)
 
+| Dimensión | Jerarquía (Niveles) | Atributos Principales |
+| :--- | :--- | :--- |
+| **Producto** | SKU → Subcategoría → Categoría | nombre_producto, marca, modelo |
+| **Cliente** | Nicho → Segmento → Tipo | nombre_cliente, edad, email |
+| **Sucursal** | Ciudad → Región → País | nombre_sucursal, dirección, comuna |
+| **Tiempo** | Día → Mes → Año | nombre_dia, dia_habil, descuento |
+
 Esta solución, optimizada para lectura, entrega escalabilidad, rendimiento analítico y facilidad de consulta para la toma de decisiones estratégicas.
 
 ## Justificación de diseño
