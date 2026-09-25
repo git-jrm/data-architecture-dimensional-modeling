@@ -42,65 +42,6 @@ Se propone una arquitectura basada en capas que separa responsabilidades:
 Diagrama de fuentes de datos, ingesta, integración y almacenamiento:
 ```mermaid
 graph LR;
-  DatosClínicos-->ETL;
-  formularios-->ETL;
-  IoT-->DataLake_RAW;
-  correos-->DataLake_RAW;
-  DataLake_RAW-->DataLake_TRUSTED;
-  DataLake_TRUSTED-->DataLake_CURATED;
-  ETL-->DataWarehouse;
-  DataLake_CURATED-->DataWarehouse;
-  DataWarehouse-->DataMart_Medicina;
-  DataWarehouse-->DataMart_RRHH;
-  DataWarehouse-->DataMart_Administracion;
-```
-
-```mermaid
-graph LR;
-    classDef fuente fill:#1e293b,stroke:#38bdf8,stroke-width:1px,color:#f8fafc;
-    classDef proceso fill:#0369a1,stroke:#38bdf8,stroke-width:1px,color:#f8fafc;
-    classDef raw fill:#0f172a,stroke:#64748b,stroke-width:1px,color:#f8fafc;
-    classDef trusted fill:#0e7490,stroke:#22d3ee,stroke-width:1px,color:#f8fafc;
-    classDef curated fill:#15803d,stroke:#4ade80,stroke-width:1px,color:#f8fafc;
-    classDef dw fill:#1e1b4b,stroke:#818cf8,stroke-width:1px,stroke-dasharray:5 5,color:#f8fafc;
-    classDef dm fill:#312e81,stroke:#a5b4fc,stroke-width:1px,color:#f8fafc;
-
-    DatosClínicos("Datos Clínicos")
-    Formularios("Formularios")
-    IoT("IoT")
-    Correos("Correos")
-    ETL("ETL / Procesamiento")
-    DataLake_RAW("Data Lake - RAW")
-    DataLake_TRUSTED("Data Lake - TRUSTED")
-    DataLake_CURATED("Data Lake - CURATED")
-    DataWarehouse("Data Warehouse (EDW)")
-    DataMart_Medicina("Data Mart - Medicina")
-    DataMart_RRHH("Data Mart - RRHH")
-    DataMart_Administracion("Data Mart - Admón")
-
-    DatosClínicos --> ETL
-    Formularios --> ETL
-    IoT --> DataLake_RAW
-    Correos --> DataLake_RAW
-    DataLake_RAW --> DataLake_TRUSTED
-    DataLake_TRUSTED --> DataLake_CURATED
-    ETL --> DataWarehouse
-    DataLake_CURATED --> DataWarehouse
-    DataWarehouse --> DataMart_Medicina
-    DataWarehouse --> DataMart_RRHH
-    DataWarehouse --> DataMart_Administracion
-
-    class DatosClínicos,Formularios,IoT,Correos fuente;
-    class ETL proceso;
-    class DataLake_RAW raw;
-    class DataLake_TRUSTED trusted;
-    class DataLake_CURATED curated;
-    class DataWarehouse dw;
-    class DataMart_Medicina,DataMart_RRHH,DataMart_Administracion dm;
-```
-
-```mermaid
-graph LR;
     classDef fuente fill:#2e1065,stroke:#c084fc,stroke-width:1px,color:#f3e8ff;
     classDef proceso fill:#0369a1,stroke:#38bdf8,stroke-width:1px,color:#f8fafc;
     classDef raw fill:#172554,stroke:#60a5fa,stroke-width:1px,color:#eff6ff;
@@ -108,50 +49,6 @@ graph LR;
     classDef curated fill:#0f766e,stroke:#2dd4bf,stroke-width:1px,color:#f0fdfa;
     classDef dw fill:#713f12,stroke:#facc15,stroke-width:1px,stroke-dasharray:5 5,color:#fefce8;
     classDef dm fill:#581c87,stroke:#e879f9,stroke-width:1px,color:#faf5ff;
-
-    DatosClínicos("Datos Clínicos")
-    Formularios("Formularios")
-    IoT("IoT")
-    Correos("Correos")
-    ETL("ETL / Procesamiento")
-    DataLake_RAW("Data Lake - RAW")
-    DataLake_TRUSTED("Data Lake - TRUSTED")
-    DataLake_CURATED("Data Lake - CURATED")
-    DataWarehouse("Data Warehouse (EDW)")
-    DataMart_Medicina("Data Mart - Medicina")
-    DataMart_RRHH("Data Mart - RRHH")
-    DataMart_Administracion("Data Mart - Admón")
-
-    DatosClínicos --> ETL
-    Formularios --> ETL
-    IoT --> DataLake_RAW
-    Correos --> DataLake_RAW
-    DataLake_RAW --> DataLake_TRUSTED
-    DataLake_TRUSTED --> DataLake_CURATED
-    ETL --> DataWarehouse
-    DataLake_CURATED --> DataWarehouse
-    DataWarehouse --> DataMart_Medicina
-    DataWarehouse --> DataMart_RRHH
-    DataWarehouse --> DataMart_Administracion
-
-    class DatosClínicos,Formularios,IoT,Correos fuente;
-    class ETL proceso;
-    class DataLake_RAW raw;
-    class DataLake_TRUSTED trusted;
-    class DataLake_CURATED curated;
-    class DataWarehouse dw;
-    class DataMart_Medicina,DataMart_RRHH,DataMart_Administracion dm;
-```
-
-```mermaid
-graph LR;
-    classDef fuente fill:#334155,stroke:#94a3b8,stroke-width:1px,color:#f1f5f9;
-    classDef proceso fill:#475569,stroke:#cbd5e1,stroke-width:1px,color:#f1f5f9;
-    classDef raw fill:#1e293b,stroke:#64748b,stroke-width:1px,color:#cbd5e1;
-    classDef trusted fill:#0f172a,stroke:#38bdf8,stroke-width:1px,color:#f1f5f9;
-    classDef curated fill:#064e3b,stroke:#34d399,stroke-width:1px,color:#ecfdf5;
-    classDef dw fill:#18181b,stroke:#a1a1aa,stroke-width:1px,stroke-dasharray:5 5,color:#f4f4f5;
-    classDef dm fill:#27272a,stroke:#d4d4d8,stroke-width:1px,color:#f4f4f5;
 
     DatosClínicos("Datos Clínicos")
     Formularios("Formularios")
